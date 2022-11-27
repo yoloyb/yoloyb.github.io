@@ -1,8 +1,20 @@
 
-
 console.log(
     "Codes uses GPL Licence"
 )
+function setMask(){//设置遮罩层
+    mask = document.createElement('div');
+    mask.style.width = window.innerWidth + 'px';
+    mask.style.height = window.innerHeight + 'px';
+    mask.style.background = '#fff';
+    mask.style.opacity = '.0';
+    mask.style.position = 'fixed';
+    mask.style.top = '0';
+    mask.style.left = '0';
+    mask.style.zIndex = 998;
+    document.body.appendChild(mask);
+    document.getElementById("rightMenu").style.zIndex=19198;
+}
 
 function insertAtCursor(myField, myValue) {
 
@@ -62,6 +74,18 @@ rmf.switchDarkMode = function () {
     typeof FB === 'object' && window.loadFBComment()
     window.DISQUS && document.getElementById('disqus_thread').children.length && setTimeout(() => window.disqusReset(), 200)
 };
+rmf.yinyong=function(){
+    var e = document.getElementsByClassName("el-textarea__inner")[0],
+        t = document.createEvent("HTMLEvents");
+    t.initEvent("input", !0, !0), e.value = d.value = "> "+getSelection().toString()+"\n\n", e.dispatchEvent(t);
+    console.log(getSelection().toString());
+    document.getElementsByClassName("el-textarea__inner")[0].value="> "+getSelection().toString()+"\n\n";
+    Snackbar.show({
+        text: '为保证最佳评论阅读体验，建议不要删除空行',
+        pos: 'top-center',
+        showAction: false,
+    })
+}
 rmf.copyWordsLink = function () {
     let url = window.location.href
     let txa = document.createElement("textarea");
@@ -70,7 +94,6 @@ rmf.copyWordsLink = function () {
     txa.select();
     document.execCommand("Copy");
     document.body.removeChild(txa);
-    Swal.fire("复制成功！");
 }
 rmf.switchReadMode = function () {
     const $body = document.body
@@ -97,27 +120,24 @@ rmf.copySelect = function () {
 
 //回到顶部
 rmf.scrollToTop = function () {
+    document.getElementsByClassName("menus_items")[1].setAttribute("style","");
+    document.getElementById("name-container").setAttribute("style","display:none");
     btf.scrollToDest(0, 500);
 }
 rmf.translate = function () {
     document.getElementById("translateLink").click();
 }
 
-// 右键菜单事件
-document.onkeydown = function (event) {
-    event = (event || window.event);
-    if (event.keyCode == 17) {
-        console.log("你知道的太多了");
-        return;
-    }
-}
+document.body.addEventListener('touchmove', function(e){
 
+}, { passive: false });
 function popupMenu() {
     //window.oncontextmenu=function(){return false;}
     window.oncontextmenu = function (event) {
         if(event.ctrlKey)return true;
         console.log(event.keyCode)
         $('.rightMenu-group.hide').hide();
+        // setMask();
         //如果有文字选中，则显示 文字选中相关的菜单项
         if (document.getSelection().toString()) {
             $('#menu-text').show();
@@ -142,6 +162,7 @@ function popupMenu() {
             }
             rmf.openWithNewTab = function () {
                 window.open(el.href);
+                // window.location.reload();
             }
             rmf.copyLink = function () {
                 let url = el.href
@@ -157,6 +178,7 @@ function popupMenu() {
             $('#menu-img').show()
             rmf.openWithNewTab = function () {
                 window.open(el.src);
+                // window.location.reload();
             }
             rmf.click = function () {
                 el.click()
@@ -170,8 +192,24 @@ function popupMenu() {
                 document.execCommand("Copy");
                 document.body.removeChild(txa);
             }
+            rmf.saveAs=function(){
+                var a = document.createElement('a');
+                var url = el.src;
+                var filename = url.split("/")[-1];
+                a.href = url;
+                a.download = filename;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
         } else if (el.tagName == "TEXTAREA" || el.tagName == "INPUT") {
             $('#menu-paste').show();
+            // rmf.paste=function(){
+            //     input.addEventListener('paste', async event => {
+            //         event.preventDefault();
+            //         const text = await navigator.clipboard.readText();
+            //         el.value+=text;
+            //       });
+            // }
             rmf.paste = function () {
                 navigator.permissions
                     .query({
@@ -185,7 +223,11 @@ function popupMenu() {
                                 insertAtCursor(el, text)
                             })
                         } else {
-                            alert('请允许读取剪贴板！')
+                            Snackbar.show({
+                                text: '请允许读取剪贴板！',
+                                pos: 'top-center',
+                                showAction: false,
+                            })
                         }
                     })
             }
@@ -240,4 +282,3 @@ function addLongtabListener(target, callback) {
 }
 
 addLongtabListener(box, popupMenu)
-

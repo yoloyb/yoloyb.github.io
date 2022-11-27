@@ -1,3 +1,4 @@
+/*@import "//at.alicdn.com/t/c/font_3787060_flenszpjdq.css";*/
 /* 页脚与头图透明 */
 #footer {
     background: transparent !important;
@@ -55,11 +56,23 @@
 
 /*导航栏*/
 /* 一级菜单居中 */
-#nav .menus_items {
-    position: absolute !important;
-    width: fit-content !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+/*#nav .menus_items {*/
+/*    position: absolute !important;*/
+/*    width: fit-content !important;*/
+/*    left: 50% !important;*/
+/*    transform: translateX(-50%) !important;*/
+/*}*/
+#nav-right{
+    flex:1 1 auto;
+    justify-content: flex-end;
+    margin-left: auto;
+    display: flex;
+    flex-wrap:nowrap;
+}
+
+/*导航栏底部样式去除*/
+#nav *::after{
+    background-color: transparent!important;
 }
 /* 子菜单横向展示 */
 #nav .menus_items .menus_item:hover .menus_item_child {
@@ -69,6 +82,120 @@
 .menus_items .menus_item:nth-child(5) .menus_item_child {
     left: -30px;
 }
+/* 这里的2是代表导航栏的第2个元素，即有子菜单的元素，可以按自己需求修改 */
+.menus_items .menus_item:nth-child(2) .menus_item_child {
+    left: -80px;
+}
+/* 这里的2是代表导航栏的第2个元素，即有子菜单的元素，可以按自己需求修改 */
+.menus_items .menus_item:nth-child(3) .menus_item_child {
+    left: -30px;
+}
+/* 这里的2是代表导航栏的第2个元素，即有子菜单的元素，可以按自己需求修改 */
+.menus_items .menus_item:nth-child(4) .menus_item_child {
+    left: -30px;
+}
+
+#site-name::before{
+    opacity: 0;
+    background-color: var(--lyx-theme)!important;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: .3s;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    position:absolute;
+    top:0!important;
+    right:0!important;
+    width:100%;
+    height:100%;
+    content: "\f015";
+    box-shadow: 0 0 5px var(--lyx-theme);
+    font-family: "Font Awesome 6 Free";
+    text-align: center;
+    color:white;
+    line-height:34px;/*如果有溢出或者垂直不居中的现象微调一下这个参数*/
+    font-size: 18px;/*根据个人喜好*/
+}
+#site-name:hover::before{
+    opacity: 1;
+    scale:1.03;
+}
+#site-name{
+    position: relative;
+    font-size: 24px; /*一定要把字体调大点，否则效果惨不忍睹！*/
+}
+:root{
+    --lyx-theme:#ed709b /*我的主题色*/
+}
+
+
+.nav-fixed #nav{
+    transform: translateY(58px)!important;
+    -webkit-transform: translateY(58px)!important;
+    -moz-transform: translateY(58px)!important;
+    -ms-transform: translateY(58px)!important;
+    -o-transform: translateY(58px)!important;
+}
+#nav{
+    transition: none!important;
+    -webkit-transition: none!important;
+    -moz-transition: none!important;
+    -ms-transition: none!important;
+    -o-transition: none!important;
+}
+
+#page-name::before{
+    font-size:18px;
+    position: absolute;
+    width:100%;
+    height:100%;
+    border-radius: 8px;
+    color:white!important;
+    top:0;
+    left:0;
+    content:'回到顶部';
+    background-color: var(--lyx-theme);
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    opacity: 0;
+    box-shadow: 0 0 3px var(--lyx-theme);
+    line-height: 45px; /*如果垂直位置不居中可以微调此值，也可以删了*/
+}
+#page-name:hover:before{
+    opacity: 1;
+}
+@media screen and (max-width:900px){
+    #page-name,#menus{
+        display:none!important;
+    }
+}
+
+#name-container{
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+#name-container:hover{
+    scale:1.03
+}
+#page-name{
+    position: relative;
+    padding:10px 30px/*如果文字间隔不合理可以微调修改，第二个是水平方向的padding，第一个是垂直的*/
+}
+#nav{
+    padding: 0 20px;
+}
+
 
 
 /* 夜间模式菜单栏发光字 */
@@ -290,3 +417,140 @@ h6::before {
     transition: .3s;
     top: -8px
 }
+/* 主题宽度 */
+.layout#content-inner  {
+    max-width: 1300px;
+}
+/*鼠标指针修改*/
+/* 全局默认鼠标指针 */
+/*body,*/
+/*html{*/
+/*    cursor: url(/cur/normal.cur),auto !important;*/
+/*}*/
+/*!* 悬停图片时的鼠标指针 *!*/
+/*img{*/
+/*    cursor: url('https://assets.akilar.top/cur/btn.cur'),auto !important;*/
+/*}*/
+/*!* 选择链接标签时的鼠标指针 *!*/
+/*a:hover{*/
+/*    cursor: url(/cur/link.cur),auto;*/
+/*}*/
+/*!* 选中输入框时的鼠标指针 *!*/
+/*input:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/input.cur'),auto;*/
+/*}*/
+/*!* 悬停按钮时的鼠标指针 *!*/
+/*button:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/btn.cur'),auto;*/
+/*}*/
+/*!* 悬停列表标签时的鼠标指针 *!*/
+/*i:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/link.cur'),auto;*/
+/*}*/
+/*!* 悬停页脚链接标签（例如页脚徽标）时的鼠标指针 *!*/
+/*#footer-wrap a:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/hf.cur'),auto;*/
+/*}*/
+/*!* 悬停页码时的鼠标指针 *!*/
+/*#pagination .page-number:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/i.cur'),auto;*/
+/*}*/
+/*!* 悬停菜单栏时的鼠标指针 *!*/
+/*#nav .site-page:hover{*/
+/*    cursor: url('https://assets.akilar.top/cur/hf.cur'),auto;*/
+/*}*/
+/*哔哩哔哩视频适配*/
+.aspect-ratio {
+    position: relative;
+    width: 90%;
+    height: auto;
+    padding-bottom: 75%;
+    margin: 3% auto;
+    text-align: center;
+}
+.aspect-ratio iframe {
+    position: absolute;
+    width: 100%;
+    height: 86%;
+    left: 0;
+    top: 0;
+}
+:root {
+    --trans-light: rgba(255, 255, 255, 0.88);
+    --trans-dark: rgba(25, 25, 25, 0.88);
+    --border-style: 1px solid rgb(169, 169, 169);
+    --backdrop-filter: blur(5px) saturate(150%);
+}
+
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item {
+    background: var(--trans-light);
+    backdrop-filter: var(--backdrop-filter);
+    border-radius: 25px;
+    border: var(--border-style);
+}
+
+/* 首页侧栏卡片 */
+#aside-content .card-widget {
+    background: var(--trans-light);
+    backdrop-filter: var(--backdrop-filter);
+    border-radius: 18px;
+    border: var(--border-style);
+}
+
+/* 文章页、归档页、普通页面 */
+div#post,
+div#page,
+div#archive {
+    background: var(--trans-light);
+    backdrop-filter: var(--backdrop-filter);
+    border: var(--border-style);
+    border-radius: 20px;
+}
+
+/* 导航栏 */
+#page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: var(--backdrop-filter);
+}
+
+[data-theme="dark"] #page-header.nav-fixed #nav {
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 夜间模式遮罩 */
+[data-theme="dark"] #recent-posts > .recent-post-item,
+[data-theme="dark"] #aside-content .card-widget,
+[data-theme="dark"] div#post,
+[data-theme="dark"] div#archive,
+[data-theme="dark"] div#page {
+    background: var(--trans-dark);
+}
+
+
+/* 夜间模式页脚页头遮罩透明 */
+[data-theme="dark"] #footer::before {
+    background: transparent !important;
+}
+[data-theme="dark"] #page-header::before {
+    background: transparent !important;
+}
+
+/* 阅读模式 */
+.read-mode #aside-content .card-widget {
+    background: rgba(158, 204, 171, 0.5) !important;
+}
+.read-mode div#post {
+    background: rgba(158, 204, 171, 0.5) !important;
+}
+
+/* 夜间模式下的阅读模式 */
+[data-theme="dark"] .read-mode #aside-content .card-widget {
+    background: rgba(25, 25, 25, 0.9) !important;
+    color: #ffffff;
+}
+[data-theme="dark"] .read-mode div#post {
+    background: rgba(25, 25, 25, 0.9) !important;
+    color: #ffffff;
+}
+
