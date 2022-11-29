@@ -36,17 +36,47 @@
 }
 
 @font-face {
-    /* 为载入的字体取名字(随意) */
-    font-family: 'YSHST';
-    /* 字体文件地址(相对或者绝对路径都可以) */
-    src: url(/font/tt2.ttf);
-    /* 定义加粗样式(加粗多少) */
-    font-weight: normal;
-    /* 定义字体样式(斜体/非斜体) */
-    font-style: normal;
-    /* 定义显示样式 */
-    font-display: block;
+    font-family: YSHST;
+    src: url(https://static.netdun.net/sc/Fomalhaut/优设好身体.woff2);
+    font-display: swap
 }
+
+@font-face {
+    font-family: MiSans;
+    src: url(https://static.netdun.net/sc/Fomalhaut/MiSans.woff2);
+    font-display: swap
+}
+
+@font-face {
+    font-family: HYTMR;
+    src: url(https://static.netdun.net/sc/Fomalhaut/HYTangMeiRen55W.woff2);
+    font-display: swap
+}
+
+@font-face {
+    font-family: LXGW;
+    src: url(https://static.netdun.net/sc/Fomalhaut/霞鹜文楷.woff2);
+    font-display: swap
+}
+
+@font-face {
+    font-family: TTQHB;
+    src: url(https://static.netdun.net/sc/Fomalhaut/甜甜圈海报字体.woff2);
+    font-display: swap
+}
+
+@font-face {
+    font-family: Consolas_1;
+    src: url(https://static.netdun.net/sc/Fomalhaut/Consolas.woff2);
+    font-display: swap
+}
+
+@font-face {
+    font-family: ZhuZiAWan_light;
+    src: url(https://static.netdun.net/sc/Fomalhaut/ZhuZiAWan2.woff2);
+    font-display: swap
+}
+
 
 /* 翻页按钮居中 */
 #pagination {
@@ -553,4 +583,39 @@ div#archive {
     background: rgba(25, 25, 25, 0.9) !important;
     color: #ffffff;
 }
+
+/* 滚动条 */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(102, 204, 255);
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-moz-selection {
+    color: #fff;
+    background-color: #e58a8a;
+}
+
+#aside-content #card-toc .toc-content .toc-link:hover {
+    color: rgb(102, 204, 255)
+}
+
+::selection {
+    background: rgb(102, 204, 255)
+}
+
+#aside-content #card-toc .toc-content .toc-link.active {
+    background: rgb(102, 204, 255)
+}
+
 
