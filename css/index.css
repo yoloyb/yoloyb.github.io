@@ -1403,7 +1403,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: url(/img/background.png);
+  background: url(http://rlnhx6rml.hn-bkt.clouddn.com/background.png);
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -4770,7 +4770,7 @@ span.mathjax-overflow {
 }
 @media screen and (max-width: 800px) {
   #web_bg {
-    background: url(/img/background.png) !important;
+    background: url(http://rlnhx6rml.hn-bkt.clouddn.com/background.png) !important;
     background-attachment: local !important;
     background-position: center !important;
     background-size: cover !important;

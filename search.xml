@@ -400,33 +400,6 @@
     
     
     <entry>
-      <title>RabbitMQ常见面试题</title>
-      <link href="/posts/a790/"/>
-      <url>/posts/a790/</url>
-      
-        <content type="html"><![CDATA[<h3 id="1-什么是rabbitmq"><a href="#1-什么是rabbitmq" class="headerlink" title="1.什么是rabbitmq"></a>1.什么是rabbitmq</h3><ul><li><code>rabbitmq</code>是采用<code>AMQP</code>高级消息队列协议的一种消息队列技术，最大的特地是消费不需要确保消息提供方存在，实现了一种服务之间的<code>解耦</code>。</li><li><code>rabbitmq</code>在分布式系统下具备<strong>异步、削峰、负债均衡</strong>等一系列的高级功能。</li><li><code>rabbitmq</code>拥有<code>持久化</code>机制，进程消息，队列中的消息都可以进行持久化保存。</li><li>在高并发的情况下，消息队列可以使得同步访问变为串行访问达到一定量的<code>限流</code>，方便数据库的操作。</li></ul><h3 id="2-消息确认发送和确认接收机制"><a href="#2-消息确认发送和确认接收机制" class="headerlink" title="2.消息确认发送和确认接收机制"></a>2.消息确认发送和确认接收机制</h3><p><strong>发送方确认模式：</strong></p><ol><li>将信道设置为<code>confirm</code>模式（发送方确认模式），则所有在此信道上发布的消息都会被指派一个唯一的<code>ID</code>。</li><li>一旦消息被投递到指定的队列，或者被写入<code>磁盘</code>后（<code>可持久化的消息</code>），信道都会发送一个<code>确认</code>给生产者。</li><li>如果<code>rabbitmq</code>发生内部错误导致消息发送失败，则会发送一条<code>未确认</code>的消息给生产者。</li><li>发送方确认模式是<code>异步</code>模式，生产者在等待确认的同时还可以持续发送消息，当确认消息到达生产者应用程序，生产者会回调方法就会被触发来 处理确认消息。</li></ol><p><strong>接收方确认模式</strong></p><ol><li>消费者每次接收一条消息都进行确认。只有消费者确认了消息，rabbitmq才可以安全的把消息从队列中删除（rabbitmq仅通过消费者的连接中断来确认是否需要重新发送消息。只要连接不中断，mq给足了时间让消费者来处理消息。保证数据的一致性）</li></ol><p><strong>特殊情况</strong></p><ol><li>如果消费者接收到消息，并且在确认之前断开了连接或者取消了订阅，rabbitmq会认为消息没有被消费，然后重新分发给下一个消费者。</li><li>如果消费者接收到消息却没有确认消息，连接也没有断开，rabbitmq会认为该消费者繁忙，不会给该消费者下发更多的消息。</li></ol><h3 id="3-重复消费问题"><a href="#3-重复消费问题" class="headerlink" title="3.重复消费问题"></a>3.重复消费问题</h3><h4 id="3-1问题概述"><a href="#3-1问题概述" class="headerlink" title="3.1问题概述"></a><strong>3.1问题概述</strong></h4><ul><li>正常情况下，消费者在消费完消息后会发送一个确认消费的的消息给队列，消息队列就知道该消息被消费，将会将该消息从消息队列中删除。</li><li>但是由于网络等故障，确认消息没有传送到消息队列，导致消息队列不知道该消息已经被消费，继续分发给下一个消费者，造成消息的重复消费。</li></ul><h4 id="3-2解决思路"><a href="#3-2解决思路" class="headerlink" title="3.2解决思路"></a>3.2解决思路</h4><ul><li>MQ 内部针对每条生产者发送的消息生成一个<code>inner-msg-id</code>，作 为<code>去重</code>的依据（消息投递失败并重传）</li><li>保证消息的<code>唯一性</code>，在消息消费时候，根据这个<code>id</code>作为<code>去重</code>的依据，根据此<code>id判断</code>该消息是否被消费过</li></ul><h3 id="4-消息传输、分发、路由"><a href="#4-消息传输、分发、路由" class="headerlink" title="4.消息传输、分发、路由"></a>4.消息传输、分发、路由</h3><h4 id="4-1传输"><a href="#4-1传输" class="headerlink" title="4.1传输"></a>4.1传输</h4><ul><li>由于tcp连接的<code>创建和销毁开销大</code>，且并发数受到系统资源的限制，会造成性能的低下，所以<code>rabbitmq</code>采用使用<code>信道</code>的方式来进行<code>传输</code>数据。</li><li>信道是建立在真是的tcp连接内的<code>虚拟连接</code>，并且每条<code>TCP连接上</code>的信道是没有限制的。</li></ul><h4 id="4-2-分发"><a href="#4-2-分发" class="headerlink" title="4.2 分发"></a>4.2 分发</h4><ul><li>若该队列至少有一个消费者进行订阅，消息将以循环（round-robin) 的方式发送给消费者。每条消息只会分发给一个订阅者并确认消息。</li><li>通过路由可以实现消息的多消费功能</li></ul><h4 id="4-3-路由"><a href="#4-3-路由" class="headerlink" title="4.3 路由"></a>4.3 路由</h4><ul><li>消息提供方-》路由-》一个或者多个队列</li><li>消息发布到交换机，消息将拥有一个路由键<code>(routing-key)</code>,在消息创建时候指定。、</li><li>通过<code>(routing-key)</code>,就可以把队列绑定到指定的交换机。</li><li>消息到达交换机，rabbitmq会将消息的路由键和队列的路由键进行匹配（针对不同的交换机有不同的匹配规则）。</li></ul><h4 id="4-4-常用的交换机"><a href="#4-4-常用的交换机" class="headerlink" title="4.4 常用的交换机"></a>4.4 常用的交换机</h4><ul><li>fanout: 如果交换机收到消息，将会广播到所有绑定的队列上面。</li><li>direct：如果路由键完全匹配，消息被投递到相应的队列。</li><li>topic：可以使来自不同源头的消息到达同一个队列。使用这个交换机可以使用通配符。</li></ul><h3 id="5-消息丢失问题"><a href="#5-消息丢失问题" class="headerlink" title="5.消息丢失问题"></a>5.消息丢失问题</h3><h4 id="5-1生产者丢失"><a href="#5-1生产者丢失" class="headerlink" title="5.1生产者丢失"></a>5.1生产者丢失</h4><ul><li>生产者丢失消息：rabbitmq提供了transaction和confirm模式来确保生产者不会丢失消息。</li><li>transaction：发送消息前开启事务(<code>（channel.txSelect()</code>)，然后发送消息，如果发送过程中产生了什么异常，则事务进行回滚（<code>channel.txRollback()</code>）发送成功则提交事务（<code>channel.txCommit()</code>），可能会造成吞吐量下降问题。</li><li>confirm：一旦<code>channe</code>l进入<code>confirm</code>模式，所有在该信道上发布的消息都将会被指派 一个唯一的ID（从1开始），一旦消息被投递到所有匹配的队列之后； <code>rabbitMQ</code>就会发送一个<code>ACK</code>给生产者（包含消息的唯一ID），这就使得生产者知道消息已经正确 到达目的队列了； 如果rabbitMQ没能处理该消息，则会发送一个Nack消息给你，你可以进行重试操作。</li></ul><h4 id="5-2消息队列丢失"><a href="#5-2消息队列丢失" class="headerlink" title="5.2消息队列丢失"></a>5.2消息队列丢失</h4><ul><li>处理消息队列丢失消息一般是开启消息的<code>持久化</code>。</li><li>这个<code>持久化</code>机会可以配合<code>confirm</code>机制进行使用，可以在消息持久化后，在给生产者发送一个<code>ack</code>信号,这样如果消息持久化之前，rabbitmq出现故障，那么生产者接收不到<code>ack信号</code>，生产者会<code>重新发送消息</code>。</li></ul><h4 id="5-3-消费者丢失"><a href="#5-3-消费者丢失" class="headerlink" title="5.3 消费者丢失"></a>5.3 消费者丢失</h4><ul><li>消费者丢失消息一般是采用了自动应答的方式，我们改为手动应答。</li><li>消费者收到消息之后，消费消息之前，自动回复rabbitmq已经收到消息。如果这时处理消息失败，就会丢失该消息；</li><li>处理消息之后，手动回复确认消息</li></ul><h3 id="6-rabbitmq集群"><a href="#6-rabbitmq集群" class="headerlink" title="6.rabbitmq集群"></a>6.rabbitmq集群</h3><h4 id="6-1普通集群模式"><a href="#6-1普通集群模式" class="headerlink" title="6.1普通集群模式"></a>6.1普通集群模式</h4><ul><li>在多台机器上面<code>启动多个rabbitmq实例</code>，每台<code>机器</code>启动一个。</li><li>我们所创建的<code>queue</code>只会放在其中一个<code>rabbitmq</code>实例上面，每个实例都可以<code>同步queue的元数据</code>（元数据可以认为是 queue 的一些配置信息，通过元数据，可以找到 queue 所在实例）。</li><li>在消费的时候，实际上如果连接到了另外一个实例，那个这个实例就会从<code>queue</code>所有的实例拉取数据。</li><li>这种方案主要是提高吞吐量，就是让集群中的多个节点来服务某个<code>queue</code>的<code>读写</code>操作。</li></ul><h4 id="6-2-镜像集群模式"><a href="#6-2-镜像集群模式" class="headerlink" title="6.2 镜像集群模式"></a>6.2 镜像集群模式</h4><ul><li>这种模式是<code>rabbitmq</code>的<code>高可用模式</code>，在镜像模式下你创建的<code>queue</code>，无论是元数据还是<code>queue</code>里面的消息都会存在于多个实例上。</li><li>每一个<code>rabbitmq</code>都有这个<code>queue</code>的完整镜像，每次进行写消息进<code>queue</code>的时候，都会自动把消息同步到多个实例的<code>queue</code>上。</li><li>我们可以在<code>rabbitmq</code>的可视化页面，指定镜像模式的<code>策略</code>，在可以指定要求数据是同步到<code>所有节点</code>，还是同步指定数量的节点。</li><li>在这种模式下，任何一个机器宕机之后，其他节点上面的还包含queue的<code>完整数据</code>，不会造成数据丢失问题。</li></ul><hr>]]></content>
-      
-      
-      <categories>
-          
-          <category> 面试题 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 面试题 </tag>
-            
-            <tag> rabbit </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Redis常见面试题</title>
       <link href="/posts/959d/"/>
       <url>/posts/959d/</url>
@@ -446,6 +419,33 @@
             <tag> 面试题 </tag>
             
             <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>RabbitMQ常见面试题</title>
+      <link href="/posts/a790/"/>
+      <url>/posts/a790/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-什么是rabbitmq"><a href="#1-什么是rabbitmq" class="headerlink" title="1.什么是rabbitmq"></a>1.什么是rabbitmq</h3><ul><li><code>rabbitmq</code>是采用<code>AMQP</code>高级消息队列协议的一种消息队列技术，最大的特地是消费不需要确保消息提供方存在，实现了一种服务之间的<code>解耦</code>。</li><li><code>rabbitmq</code>在分布式系统下具备<strong>异步、削峰、负债均衡</strong>等一系列的高级功能。</li><li><code>rabbitmq</code>拥有<code>持久化</code>机制，进程消息，队列中的消息都可以进行持久化保存。</li><li>在高并发的情况下，消息队列可以使得同步访问变为串行访问达到一定量的<code>限流</code>，方便数据库的操作。</li></ul><h3 id="2-消息确认发送和确认接收机制"><a href="#2-消息确认发送和确认接收机制" class="headerlink" title="2.消息确认发送和确认接收机制"></a>2.消息确认发送和确认接收机制</h3><p><strong>发送方确认模式：</strong></p><ol><li>将信道设置为<code>confirm</code>模式（发送方确认模式），则所有在此信道上发布的消息都会被指派一个唯一的<code>ID</code>。</li><li>一旦消息被投递到指定的队列，或者被写入<code>磁盘</code>后（<code>可持久化的消息</code>），信道都会发送一个<code>确认</code>给生产者。</li><li>如果<code>rabbitmq</code>发生内部错误导致消息发送失败，则会发送一条<code>未确认</code>的消息给生产者。</li><li>发送方确认模式是<code>异步</code>模式，生产者在等待确认的同时还可以持续发送消息，当确认消息到达生产者应用程序，生产者会回调方法就会被触发来 处理确认消息。</li></ol><p><strong>接收方确认模式</strong></p><ol><li>消费者每次接收一条消息都进行确认。只有消费者确认了消息，rabbitmq才可以安全的把消息从队列中删除（rabbitmq仅通过消费者的连接中断来确认是否需要重新发送消息。只要连接不中断，mq给足了时间让消费者来处理消息。保证数据的一致性）</li></ol><p><strong>特殊情况</strong></p><ol><li>如果消费者接收到消息，并且在确认之前断开了连接或者取消了订阅，rabbitmq会认为消息没有被消费，然后重新分发给下一个消费者。</li><li>如果消费者接收到消息却没有确认消息，连接也没有断开，rabbitmq会认为该消费者繁忙，不会给该消费者下发更多的消息。</li></ol><h3 id="3-重复消费问题"><a href="#3-重复消费问题" class="headerlink" title="3.重复消费问题"></a>3.重复消费问题</h3><h4 id="3-1问题概述"><a href="#3-1问题概述" class="headerlink" title="3.1问题概述"></a><strong>3.1问题概述</strong></h4><ul><li>正常情况下，消费者在消费完消息后会发送一个确认消费的的消息给队列，消息队列就知道该消息被消费，将会将该消息从消息队列中删除。</li><li>但是由于网络等故障，确认消息没有传送到消息队列，导致消息队列不知道该消息已经被消费，继续分发给下一个消费者，造成消息的重复消费。</li></ul><h4 id="3-2解决思路"><a href="#3-2解决思路" class="headerlink" title="3.2解决思路"></a>3.2解决思路</h4><ul><li>MQ 内部针对每条生产者发送的消息生成一个<code>inner-msg-id</code>，作 为<code>去重</code>的依据（消息投递失败并重传）</li><li>保证消息的<code>唯一性</code>，在消息消费时候，根据这个<code>id</code>作为<code>去重</code>的依据，根据此<code>id判断</code>该消息是否被消费过</li></ul><h3 id="4-消息传输、分发、路由"><a href="#4-消息传输、分发、路由" class="headerlink" title="4.消息传输、分发、路由"></a>4.消息传输、分发、路由</h3><h4 id="4-1传输"><a href="#4-1传输" class="headerlink" title="4.1传输"></a>4.1传输</h4><ul><li>由于tcp连接的<code>创建和销毁开销大</code>，且并发数受到系统资源的限制，会造成性能的低下，所以<code>rabbitmq</code>采用使用<code>信道</code>的方式来进行<code>传输</code>数据。</li><li>信道是建立在真是的tcp连接内的<code>虚拟连接</code>，并且每条<code>TCP连接上</code>的信道是没有限制的。</li></ul><h4 id="4-2-分发"><a href="#4-2-分发" class="headerlink" title="4.2 分发"></a>4.2 分发</h4><ul><li>若该队列至少有一个消费者进行订阅，消息将以循环（round-robin) 的方式发送给消费者。每条消息只会分发给一个订阅者并确认消息。</li><li>通过路由可以实现消息的多消费功能</li></ul><h4 id="4-3-路由"><a href="#4-3-路由" class="headerlink" title="4.3 路由"></a>4.3 路由</h4><ul><li>消息提供方-》路由-》一个或者多个队列</li><li>消息发布到交换机，消息将拥有一个路由键<code>(routing-key)</code>,在消息创建时候指定。、</li><li>通过<code>(routing-key)</code>,就可以把队列绑定到指定的交换机。</li><li>消息到达交换机，rabbitmq会将消息的路由键和队列的路由键进行匹配（针对不同的交换机有不同的匹配规则）。</li></ul><h4 id="4-4-常用的交换机"><a href="#4-4-常用的交换机" class="headerlink" title="4.4 常用的交换机"></a>4.4 常用的交换机</h4><ul><li>fanout: 如果交换机收到消息，将会广播到所有绑定的队列上面。</li><li>direct：如果路由键完全匹配，消息被投递到相应的队列。</li><li>topic：可以使来自不同源头的消息到达同一个队列。使用这个交换机可以使用通配符。</li></ul><h3 id="5-消息丢失问题"><a href="#5-消息丢失问题" class="headerlink" title="5.消息丢失问题"></a>5.消息丢失问题</h3><h4 id="5-1生产者丢失"><a href="#5-1生产者丢失" class="headerlink" title="5.1生产者丢失"></a>5.1生产者丢失</h4><ul><li>生产者丢失消息：rabbitmq提供了transaction和confirm模式来确保生产者不会丢失消息。</li><li>transaction：发送消息前开启事务(<code>（channel.txSelect()</code>)，然后发送消息，如果发送过程中产生了什么异常，则事务进行回滚（<code>channel.txRollback()</code>）发送成功则提交事务（<code>channel.txCommit()</code>），可能会造成吞吐量下降问题。</li><li>confirm：一旦<code>channe</code>l进入<code>confirm</code>模式，所有在该信道上发布的消息都将会被指派 一个唯一的ID（从1开始），一旦消息被投递到所有匹配的队列之后； <code>rabbitMQ</code>就会发送一个<code>ACK</code>给生产者（包含消息的唯一ID），这就使得生产者知道消息已经正确 到达目的队列了； 如果rabbitMQ没能处理该消息，则会发送一个Nack消息给你，你可以进行重试操作。</li></ul><h4 id="5-2消息队列丢失"><a href="#5-2消息队列丢失" class="headerlink" title="5.2消息队列丢失"></a>5.2消息队列丢失</h4><ul><li>处理消息队列丢失消息一般是开启消息的<code>持久化</code>。</li><li>这个<code>持久化</code>机会可以配合<code>confirm</code>机制进行使用，可以在消息持久化后，在给生产者发送一个<code>ack</code>信号,这样如果消息持久化之前，rabbitmq出现故障，那么生产者接收不到<code>ack信号</code>，生产者会<code>重新发送消息</code>。</li></ul><h4 id="5-3-消费者丢失"><a href="#5-3-消费者丢失" class="headerlink" title="5.3 消费者丢失"></a>5.3 消费者丢失</h4><ul><li>消费者丢失消息一般是采用了自动应答的方式，我们改为手动应答。</li><li>消费者收到消息之后，消费消息之前，自动回复rabbitmq已经收到消息。如果这时处理消息失败，就会丢失该消息；</li><li>处理消息之后，手动回复确认消息</li></ul><h3 id="6-rabbitmq集群"><a href="#6-rabbitmq集群" class="headerlink" title="6.rabbitmq集群"></a>6.rabbitmq集群</h3><h4 id="6-1普通集群模式"><a href="#6-1普通集群模式" class="headerlink" title="6.1普通集群模式"></a>6.1普通集群模式</h4><ul><li>在多台机器上面<code>启动多个rabbitmq实例</code>，每台<code>机器</code>启动一个。</li><li>我们所创建的<code>queue</code>只会放在其中一个<code>rabbitmq</code>实例上面，每个实例都可以<code>同步queue的元数据</code>（元数据可以认为是 queue 的一些配置信息，通过元数据，可以找到 queue 所在实例）。</li><li>在消费的时候，实际上如果连接到了另外一个实例，那个这个实例就会从<code>queue</code>所有的实例拉取数据。</li><li>这种方案主要是提高吞吐量，就是让集群中的多个节点来服务某个<code>queue</code>的<code>读写</code>操作。</li></ul><h4 id="6-2-镜像集群模式"><a href="#6-2-镜像集群模式" class="headerlink" title="6.2 镜像集群模式"></a>6.2 镜像集群模式</h4><ul><li>这种模式是<code>rabbitmq</code>的<code>高可用模式</code>，在镜像模式下你创建的<code>queue</code>，无论是元数据还是<code>queue</code>里面的消息都会存在于多个实例上。</li><li>每一个<code>rabbitmq</code>都有这个<code>queue</code>的完整镜像，每次进行写消息进<code>queue</code>的时候，都会自动把消息同步到多个实例的<code>queue</code>上。</li><li>我们可以在<code>rabbitmq</code>的可视化页面，指定镜像模式的<code>策略</code>，在可以指定要求数据是同步到<code>所有节点</code>，还是同步指定数量的节点。</li><li>在这种模式下，任何一个机器宕机之后，其他节点上面的还包含queue的<code>完整数据</code>，不会造成数据丢失问题。</li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试题 </tag>
+            
+            <tag> rabbit </tag>
             
         </tags>
       
