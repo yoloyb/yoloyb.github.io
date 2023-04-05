@@ -3175,8 +3175,8 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(http://image.yoloyb.top/background.png);
-    --darkmode-bg:url(http://image.yoloyb.top/wallhaven-9mer5w_1920x1080.png);
+    --default-bg: url(https://data-static.netdun.net/Fomalhaut/img/dm2.webp);
+    --darkmode-bg:url(https://data-static.netdun.net/Fomalhaut/img/dm2.webp);
     --mobileday-bg: url(https://lskypro.acozycotage.net/Fomalhaut/img/snow.webp);
     --mobilenight-bg: url(https://lskypro.acozycotage.net/Fomalhaut/img/mb8.webp);
   }`;
