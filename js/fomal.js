@@ -3175,8 +3175,8 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://data-static.netdun.net/Fomalhaut/img/dm2.webp);
-    --darkmode-bg:url(https://data-static.netdun.net/Fomalhaut/img/dm2.webp);
+    --default-bg: url(https://data-static.netdun.net/Fomalhaut/img/home_bg.webp);
+    --darkmode-bg: url(https://data-static.netdun.net/Fomalhaut/img/dm2.webp);
     --mobileday-bg: url(https://lskypro.acozycotage.net/Fomalhaut/img/snow.webp);
     --mobilenight-bg: url(https://lskypro.acozycotage.net/Fomalhaut/img/mb8.webp);
   }`;
