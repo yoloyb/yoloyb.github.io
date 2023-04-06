@@ -246,9 +246,9 @@
     <category term="面试题" scheme="https://www.yoloyb.top/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
-    <category term="面试题" scheme="https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
     <category term="java" scheme="https://www.yoloyb.top/tags/java/"/>
+    
+    <category term="面试题" scheme="https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     <category term="集合" scheme="https://www.yoloyb.top/tags/%E9%9B%86%E5%90%88/"/>
     
@@ -271,13 +271,13 @@
     <category term="面试题" scheme="https://www.yoloyb.top/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
-    <category term="面试题" scheme="https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <category term="java" scheme="https://www.yoloyb.top/tags/java/"/>
     
-    <category term="多线程" scheme="https://www.yoloyb.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <category term="面试题" scheme="https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     <category term="并发" scheme="https://www.yoloyb.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
-    <category term="java" scheme="https://www.yoloyb.top/tags/java/"/>
+    <category term="多线程" scheme="https://www.yoloyb.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
@@ -298,13 +298,13 @@
     <category term="面试题" scheme="https://www.yoloyb.top/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
     
-    <category term="Java" scheme="https://www.yoloyb.top/tags/Java/"/>
-    
     <category term="面试题" scheme="https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    <category term="并发" scheme="https://www.yoloyb.top/tags/%E5%B9%B6%E5%8F%91/"/>
     
     <category term="多线程" scheme="https://www.yoloyb.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
-    <category term="并发" scheme="https://www.yoloyb.top/tags/%E5%B9%B6%E5%8F%91/"/>
+    <category term="Java" scheme="https://www.yoloyb.top/tags/Java/"/>
     
   </entry>
   
