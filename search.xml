@@ -31,33 +31,6 @@
     
     
     <entry>
-      <title>java基础面试题</title>
-      <link href="/posts/54a0.html"/>
-      <url>/posts/54a0.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="1-面向对象和面向过程的区别">1.面向对象和面向过程的区别</h2><ul><li><code>面向过程：面向过程的性能比面向对象的高</code>。因为类调用时候需要实例化，开销比较大，比较消耗资源。</li><li><code>面向对象：面向对象易维护、易复用、易扩展</code>。面向对象具有<code>封装</code>、<code>继承</code>、<code>多态</code>的特性，所有可以设计出低耦合的系统，让系统更加灵活，更加易于维护。</li></ul><h2 id="2-重载和重写">2.重载和重写</h2><ul><li><code>重载</code>：一个方法根据输入的参数的不同，做出不同的处理。</li><li><code>重写</code>：当子类<code>继承</code>父类相同方法，输入数据一样，但是要做出有区别与父类的响应。重写就是子类对父类方法的重新改造。</li></ul><h2 id="3-封装、继承、多态">3.封装、继承、多态</h2><ul><li><code>封装</code>：把一个对象的<code>属性方法私有化</code>，同时<code>提供</code>一些外界可以被外界<code>访问的属性的方法</code>。</li><li><code>继承</code>：继承是使用已经存在的类的定义作为基础建立新的类的技术，新类的定义可以<code>增加</code>新的<code>数据</code>或者新的<code>功能</code>。可以非常方便的<code>复用代码</code>。</li><li><code>多态</code>：所谓多态就是指程序中定义的引⽤变量所指向的具体类型和通过该引⽤变量发出的⽅法调⽤在编 程时并不确定，⽽是在程序运⾏期间才确定，即⼀个引⽤变量到底会指向哪个类的实例对象，该 引⽤变量发出的⽅法调⽤到底是哪个类中实现的⽅法，必须在由程序运⾏期间才能决定。</li></ul><h2 id="4-自动装箱和拆箱">4.自动装箱和拆箱</h2><ul><li><code>装箱</code>：将基本类型用他们对应的引用类型包装起来</li><li><code>拆箱</code>：将包装类型转化为基本类型</li></ul><h2 id="5-接口和抽象类">5.接口和抽象类</h2><ul><li>接口的默认修饰符是<code>public</code>，所有的方法在接口中不能有实现。而抽象类可以有非抽象方法。</li><li>接口中除了<code>static</code>、<code>final</code>变量不能有其他变量，抽象类不一定。</li><li>一个类可以实现<code>多个接口</code>，只能实现<code>一个抽象类</code>。接口本身可以通过<code>extend</code>关键字扩展多个接口。</li><li>抽象是对<code>类</code>的抽象，而接口是对<code>行为</code>的抽象，是一种行为<code>设计规范</code>。</li></ul><h2 id="6-静态方法和实例方法">6.静态方法和实例方法</h2><ul><li>在外部调用静态方法时候，可以使用<code>类名.方法名</code>的方式,也可以使用<code>对象名.方法名</code>的方式。而实例方法只可以使用后面的一种方法，也就是说调用静态方法可以不创建实例对象。</li><li>静态方法在访问本类的成员变量的时候，只允许访问静态成员，而不允许访问实例成员变量和实例成员方法。</li></ul><h2 id="7-和equals">7.==和equals</h2><ul><li><code>==</code>：判断两个对象的<code>地址</code>是不是<code>相等</code>。即判断两个对象是不是同一个对象。</li><li><code>equals()</code>:判断两个对象是否<code>相等</code>，有两种情况：<ul><li><strong>情况1</strong>：类没有覆盖equals()方法，则通过equals()比较两个类的对象时，等价于通过使用<code>==</code>比较两个对象。</li><li><strong>情况2</strong>：类覆盖了这个方法，一般情况下，覆盖这个方法都是为了比较两个对象的·<code>内容</code>是否<code>相等</code></li></ul></li></ul><h2 id="8-hashCode和equals">8.hashCode和equals</h2><ul><li><code>hashCode()</code>的作用是获取<code>哈希码</code>，也叫做<code>散列码</code>，它实际上返回的是一个<code>int</code>整数。这个哈希码的作用是确定该<code>对象</code>在<code>哈希表</code>中的<code>索引位置</code>。</li><li>如果两个对象的相等，则他们的hashcode一定也是相同的。两个对象相等，对两个对象调用equals方法都是返回true。</li><li>如果两个对象的hashcode相等，那么这两个对象不一定相等，</li></ul><h2 id="9-线程、程序、进程">9.线程、程序、进程</h2><ul><li><code>进程</code>：进程是程序的一次<code>执行的过程</code>，是系统运行程序的<code>基本单位</code>，系统运行<code>一个程序</code>就是一个<code>进程从创建到消亡</code>的过程。</li><li><code>线程</code>：线程与进程相似，但是线程是一个比进程更小的<code>执行单位</code>。一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程<code>共享同一块内存空间</code>和<code>同一组系统资源</code>。</li><li><code>程序</code>：是含有<code>指定和数据的文件</code>，被存储在<code>磁盘</code>或者其他的<code>数据存储设备</code>中。</li></ul><h2 id="10-IO流">10.IO流</h2><h3 id="10-1-分类">10.1 分类</h3><ul><li>按照流的<code>流向</code>：<code>输入流</code>和<code>输出流</code></li><li>按照<code>操作单元</code>划分：<code>字节流</code>和<code>字符流</code></li><li>按照流的<code>角色</code>：<code>节点流</code>和<code>处理流</code></li></ul><h3 id="10-2-四个基类">10.2 四个基类</h3><ul><li>InputStream/Reader: 所有的输⼊流的基类，前者是字节输⼊流，后者是字符输⼊流。</li><li>OutputStream/Writer: 所有输出流的基类，前者是字节输出流，后者是字符输出流。</li></ul><h3 id="10-3-字节流和字符流区别">10.3 字节流和字符流区别</h3><ul><li>字节流是通过<code>java虚拟机</code>将<code>字节转换</code>得到，这个过程是非常<code>耗时</code>的，如果我们不知道编码类型就很容易出现<code>乱码</code>问题。</li><li>所以I/O流就给我们提供了一个直接<code>操作字符</code>的接口，方便我们平时多字符进行流操作。</li><li>如果是<code>图片</code>、<code>音频</code>等还是使用<code>字节流</code>比较好，如果<code>涉及到字符操作</code>使用<code>字符流</code>会比较好。</li></ul><h3 id="10-4-NIO-BIO-AIO">10.4 NIO BIO AIO</h3><ul><li>BIO:同步阻塞IO模式，数据的读取写入必须阻塞在一个线程内等待其完成，口语让每一个连接专注于自己的I/O并且编程模型简单，不用过多考虑系统的过载，限流等问题。当连接数过大的时候，传统的BIO模式是无能为力的</li><li>NIO:同步非阻塞的I/O模式，对应<code>java.nio</code>包，提供了<code>Channel、Selector、Buffer</code>等抽象。支持<code>面向缓冲</code>，基于通道的I/O操作方法。<ul><li>NIO提供了与传统BIO模型中的<code>Socket</code>和<code>ServerSocket</code>相对应的<code>SocketChannel</code>和<code>ServerSocketChannel</code>两种不同的套接字实现。</li><li>两种通道都⽀持<code>阻塞</code>和<code>⾮阻塞</code>两种模式。 阻塞模式使⽤就像传统中的⽀持⼀样，比较简单，但是性能和可靠性都不好；⾮阻塞模式正 好与之相反。</li><li>对于低负载、低并发的应⽤程序，可以使⽤同步阻塞 I/O 来<code>提升开发速率</code>和<code>更好的维护性</code>；</li><li>对于⾼负载、⾼并发的（⽹络）应⽤，应使⽤NI 的⾮阻塞模式来开发</li></ul></li><li>AIO:异步⾮阻塞的 IO 模型。异步 IO 是<code>基于事件</code>和<code>回调机制</code>实现的，也就是应⽤操作之后会<code>直接返回</code>，<code>不会堵塞</code>在那⾥，当后台处理完成，操作系统会通知相应的线程进⾏后续的操作。 AIO 是异步 IO 的缩写，虽然 NIO 在⽹络操作中，提供了⾮阻塞的⽅法，但是 NIO 的 IO 行为还是同步的。</li></ul><h2 id="11-深拷贝和浅拷贝">11.深拷贝和浅拷贝</h2><ul><li><code>浅拷贝</code>：对<code>基本数据</code>类型进行<code>值传递</code>，对<code>引用数据类型</code>进行<code>引用传递</code>的拷贝。</li><li><code>深拷贝</code>：对<code>基本数据类型</code>进行<code>值传递</code>，对<code>引用数据类型</code>，创建一个<code>新的对象</code>，并<code>复制</code>其内容，此为<code>深拷贝</code>。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 面试题 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> java </tag>
-            
-            <tag> 基础 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Lock</title>
       <link href="/posts/adfd.html"/>
       <url>/posts/adfd.html</url>
@@ -108,6 +81,33 @@
             <tag> juc </tag>
             
             <tag> 线程池 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java基础面试题</title>
+      <link href="/posts/54a0.html"/>
+      <url>/posts/54a0.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="1-面向对象和面向过程的区别">1.面向对象和面向过程的区别</h2><ul><li><code>面向过程：面向过程的性能比面向对象的高</code>。因为类调用时候需要实例化，开销比较大，比较消耗资源。</li><li><code>面向对象：面向对象易维护、易复用、易扩展</code>。面向对象具有<code>封装</code>、<code>继承</code>、<code>多态</code>的特性，所有可以设计出低耦合的系统，让系统更加灵活，更加易于维护。</li></ul><h2 id="2-重载和重写">2.重载和重写</h2><ul><li><code>重载</code>：一个方法根据输入的参数的不同，做出不同的处理。</li><li><code>重写</code>：当子类<code>继承</code>父类相同方法，输入数据一样，但是要做出有区别与父类的响应。重写就是子类对父类方法的重新改造。</li></ul><h2 id="3-封装、继承、多态">3.封装、继承、多态</h2><ul><li><code>封装</code>：把一个对象的<code>属性方法私有化</code>，同时<code>提供</code>一些外界可以被外界<code>访问的属性的方法</code>。</li><li><code>继承</code>：继承是使用已经存在的类的定义作为基础建立新的类的技术，新类的定义可以<code>增加</code>新的<code>数据</code>或者新的<code>功能</code>。可以非常方便的<code>复用代码</code>。</li><li><code>多态</code>：所谓多态就是指程序中定义的引⽤变量所指向的具体类型和通过该引⽤变量发出的⽅法调⽤在编 程时并不确定，⽽是在程序运⾏期间才确定，即⼀个引⽤变量到底会指向哪个类的实例对象，该 引⽤变量发出的⽅法调⽤到底是哪个类中实现的⽅法，必须在由程序运⾏期间才能决定。</li></ul><h2 id="4-自动装箱和拆箱">4.自动装箱和拆箱</h2><ul><li><code>装箱</code>：将基本类型用他们对应的引用类型包装起来</li><li><code>拆箱</code>：将包装类型转化为基本类型</li></ul><h2 id="5-接口和抽象类">5.接口和抽象类</h2><ul><li>接口的默认修饰符是<code>public</code>，所有的方法在接口中不能有实现。而抽象类可以有非抽象方法。</li><li>接口中除了<code>static</code>、<code>final</code>变量不能有其他变量，抽象类不一定。</li><li>一个类可以实现<code>多个接口</code>，只能实现<code>一个抽象类</code>。接口本身可以通过<code>extend</code>关键字扩展多个接口。</li><li>抽象是对<code>类</code>的抽象，而接口是对<code>行为</code>的抽象，是一种行为<code>设计规范</code>。</li></ul><h2 id="6-静态方法和实例方法">6.静态方法和实例方法</h2><ul><li>在外部调用静态方法时候，可以使用<code>类名.方法名</code>的方式,也可以使用<code>对象名.方法名</code>的方式。而实例方法只可以使用后面的一种方法，也就是说调用静态方法可以不创建实例对象。</li><li>静态方法在访问本类的成员变量的时候，只允许访问静态成员，而不允许访问实例成员变量和实例成员方法。</li></ul><h2 id="7-和equals">7.==和equals</h2><ul><li><code>==</code>：判断两个对象的<code>地址</code>是不是<code>相等</code>。即判断两个对象是不是同一个对象。</li><li><code>equals()</code>:判断两个对象是否<code>相等</code>，有两种情况：<ul><li><strong>情况1</strong>：类没有覆盖equals()方法，则通过equals()比较两个类的对象时，等价于通过使用<code>==</code>比较两个对象。</li><li><strong>情况2</strong>：类覆盖了这个方法，一般情况下，覆盖这个方法都是为了比较两个对象的·<code>内容</code>是否<code>相等</code></li></ul></li></ul><h2 id="8-hashCode和equals">8.hashCode和equals</h2><ul><li><code>hashCode()</code>的作用是获取<code>哈希码</code>，也叫做<code>散列码</code>，它实际上返回的是一个<code>int</code>整数。这个哈希码的作用是确定该<code>对象</code>在<code>哈希表</code>中的<code>索引位置</code>。</li><li>如果两个对象的相等，则他们的hashcode一定也是相同的。两个对象相等，对两个对象调用equals方法都是返回true。</li><li>如果两个对象的hashcode相等，那么这两个对象不一定相等，</li></ul><h2 id="9-线程、程序、进程">9.线程、程序、进程</h2><ul><li><code>进程</code>：进程是程序的一次<code>执行的过程</code>，是系统运行程序的<code>基本单位</code>，系统运行<code>一个程序</code>就是一个<code>进程从创建到消亡</code>的过程。</li><li><code>线程</code>：线程与进程相似，但是线程是一个比进程更小的<code>执行单位</code>。一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程<code>共享同一块内存空间</code>和<code>同一组系统资源</code>。</li><li><code>程序</code>：是含有<code>指定和数据的文件</code>，被存储在<code>磁盘</code>或者其他的<code>数据存储设备</code>中。</li></ul><h2 id="10-IO流">10.IO流</h2><h3 id="10-1-分类">10.1 分类</h3><ul><li>按照流的<code>流向</code>：<code>输入流</code>和<code>输出流</code></li><li>按照<code>操作单元</code>划分：<code>字节流</code>和<code>字符流</code></li><li>按照流的<code>角色</code>：<code>节点流</code>和<code>处理流</code></li></ul><h3 id="10-2-四个基类">10.2 四个基类</h3><ul><li>InputStream/Reader: 所有的输⼊流的基类，前者是字节输⼊流，后者是字符输⼊流。</li><li>OutputStream/Writer: 所有输出流的基类，前者是字节输出流，后者是字符输出流。</li></ul><h3 id="10-3-字节流和字符流区别">10.3 字节流和字符流区别</h3><ul><li>字节流是通过<code>java虚拟机</code>将<code>字节转换</code>得到，这个过程是非常<code>耗时</code>的，如果我们不知道编码类型就很容易出现<code>乱码</code>问题。</li><li>所以I/O流就给我们提供了一个直接<code>操作字符</code>的接口，方便我们平时多字符进行流操作。</li><li>如果是<code>图片</code>、<code>音频</code>等还是使用<code>字节流</code>比较好，如果<code>涉及到字符操作</code>使用<code>字符流</code>会比较好。</li></ul><h3 id="10-4-NIO-BIO-AIO">10.4 NIO BIO AIO</h3><ul><li>BIO:同步阻塞IO模式，数据的读取写入必须阻塞在一个线程内等待其完成，口语让每一个连接专注于自己的I/O并且编程模型简单，不用过多考虑系统的过载，限流等问题。当连接数过大的时候，传统的BIO模式是无能为力的</li><li>NIO:同步非阻塞的I/O模式，对应<code>java.nio</code>包，提供了<code>Channel、Selector、Buffer</code>等抽象。支持<code>面向缓冲</code>，基于通道的I/O操作方法。<ul><li>NIO提供了与传统BIO模型中的<code>Socket</code>和<code>ServerSocket</code>相对应的<code>SocketChannel</code>和<code>ServerSocketChannel</code>两种不同的套接字实现。</li><li>两种通道都⽀持<code>阻塞</code>和<code>⾮阻塞</code>两种模式。 阻塞模式使⽤就像传统中的⽀持⼀样，比较简单，但是性能和可靠性都不好；⾮阻塞模式正 好与之相反。</li><li>对于低负载、低并发的应⽤程序，可以使⽤同步阻塞 I/O 来<code>提升开发速率</code>和<code>更好的维护性</code>；</li><li>对于⾼负载、⾼并发的（⽹络）应⽤，应使⽤NI 的⾮阻塞模式来开发</li></ul></li><li>AIO:异步⾮阻塞的 IO 模型。异步 IO 是<code>基于事件</code>和<code>回调机制</code>实现的，也就是应⽤操作之后会<code>直接返回</code>，<code>不会堵塞</code>在那⾥，当后台处理完成，操作系统会通知相应的线程进⾏后续的操作。 AIO 是异步 IO 的缩写，虽然 NIO 在⽹络操作中，提供了⾮阻塞的⽅法，但是 NIO 的 IO 行为还是同步的。</li></ul><h2 id="11-深拷贝和浅拷贝">11.深拷贝和浅拷贝</h2><ul><li><code>浅拷贝</code>：对<code>基本数据</code>类型进行<code>值传递</code>，对<code>引用数据类型</code>进行<code>引用传递</code>的拷贝。</li><li><code>深拷贝</code>：对<code>基本数据类型</code>进行<code>值传递</code>，对<code>引用数据类型</code>，创建一个<code>新的对象</code>，并<code>复制</code>其内容，此为<code>深拷贝</code>。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 基础 </tag>
             
         </tags>
       
