@@ -2,7 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.yoloyb.top/categories/index.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yoloyb.top/tags/index.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/box/animation/index.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/box/gallery/index.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/box/nav/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -93,42 +129,6 @@
   
   <url>
     <loc>https://www.yoloyb.top/social/link/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/categories/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/animation/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/gallery/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/nav/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
