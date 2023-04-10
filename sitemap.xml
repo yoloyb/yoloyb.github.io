@@ -2,43 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.yoloyb.top/categories/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.yoloyb.top/tags/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/animation/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/gallery/index.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/box/nav/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -137,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://www.yoloyb.top/posts/9fb1.html</loc>
+    <loc>https://www.yoloyb.top/categories/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -146,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://www.yoloyb.top/posts/e86f.html</loc>
+    <loc>https://www.yoloyb.top/box/animation/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -155,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://www.yoloyb.top/posts/4922.html</loc>
+    <loc>https://www.yoloyb.top/box/gallery/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -164,16 +128,7 @@
   </url>
   
   <url>
-    <loc>https://www.yoloyb.top/posts/8aa5.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/posts/361.html</loc>
+    <loc>https://www.yoloyb.top/box/nav/index.html</loc>
     
     <lastmod>2023-04-10</lastmod>
     
@@ -218,6 +173,60 @@
   </url>
   
   <url>
+    <loc>https://www.yoloyb.top/posts/9fb1.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/posts/a7f7.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/posts/e86f.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/posts/4922.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/posts/8aa5.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.yoloyb.top/posts/361.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yoloyb.top/posts/9a19.html</loc>
     
     <lastmod>2023-04-10</lastmod>
@@ -254,6 +263,15 @@
   </url>
   
   <url>
+    <loc>https://www.yoloyb.top/posts/f43.html</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yoloyb.top/posts/31e7.html</loc>
     
     <lastmod>2023-04-10</lastmod>
@@ -281,27 +299,18 @@
   </url>
   
   <url>
+    <loc>https://www.yoloyb.top/posts/cs.html</loc>
+    
+    <lastmod>2023-04-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yoloyb.top/posts/2013454d.html</loc>
     
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/posts/f43.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/posts/a7f7.html</loc>
-    
-    <lastmod>2023-04-10</lastmod>
+    <lastmod>2022-10-23</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -347,6 +356,13 @@
   </url>
   
   <url>
+    <loc>https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <lastmod>2023-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.yoloyb.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2023-04-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -362,13 +378,6 @@
   
   <url>
     <loc>https://www.yoloyb.top/tags/java/</loc>
-    <lastmod>2023-04-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.yoloyb.top/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2023-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
