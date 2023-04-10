@@ -143,19 +143,6 @@
     
     
     <entry>
-      <title>测试</title>
-      <link href="/posts/cs.html"/>
-      <url>/posts/cs.html</url>
-      
-        <content type="html"><![CDATA[<p>1111111111111111111111111111111111111111</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>JVM-运行时数据区</title>
       <link href="/posts/e13.html"/>
       <url>/posts/e13.html</url>
